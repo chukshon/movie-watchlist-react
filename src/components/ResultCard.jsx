@@ -1,5 +1,8 @@
 import Moment from 'react-moment'
+import { useAppContext } from '../context/appContext'
+
 const ResultCard = ({ movie }) => {
+  const { addToWatched, addToWatchList } = useAppContext()
   return (
     <div className='result-card'>
       <div className='poster-wrapper'>
@@ -21,9 +24,13 @@ const ResultCard = ({ movie }) => {
         </div>
 
         <div className='controls'>
-          <button className='btn'>Add to Watchlist</button>
+          <button className='btn' onClick={() => addToWatchList(movie)}>
+            Add to Watchlist
+          </button>
 
-          <button className='btn'>Add to Watched</button>
+          <button className='btn' onClick={() => addToWatched(movie)}>
+            Add to Watched
+          </button>
         </div>
       </div>
     </div>

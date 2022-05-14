@@ -13,7 +13,6 @@ const Add = () => {
       )
       const data = await api.json()
       setResults(data.results)
-      console.log(data.results)
     } catch (err) {
       setResults([])
     }
