@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ResultCard from '../components/ResultCard'
 
 const Add = () => {
   const [value, setValue] = useState('')
@@ -6,15 +7,15 @@ const Add = () => {
 
   const handleChange = async (e) => {
     setValue(e.target.value)
-
     try {
       const api = await fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
       )
       const data = await api.json()
       setResults(data.results)
+      console.log(data.results)
     } catch (err) {
-      console.log(err)
+      setResults([])
     }
   }
   return (
@@ -29,9 +30,18 @@ const Add = () => {
               onChange={handleChange}
             />
           </div>
-          {results.map((movie) => {
-            return <h1 key={movie.id}>{movie.title}</h1>
-          })}
+          {results && (
+            <ul className='results'>
+              {results.map((movie) => {
+                return (
+                  <li key={movie.id}>
+                    <ResultCard movie={movie} />
+                  </li>
+                )
+              })}
+            </ul>
+          )}
+          {!results && <h1>Search for a movie</h1>}
         </div>
       </div>
     </div>

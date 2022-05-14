@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Add from './components/Add'
 import Header from './components/Header'
-import Watched from './components/Watched'
-import WatchList from './components/WatchList'
 import './App.css'
 import './lib/font-awesome/css/all.min.css'
+import Add from './pages/Add'
+import WatchList from './pages/WatchList'
+import Watched from './pages/Watched'
 
 function App() {
   return (
