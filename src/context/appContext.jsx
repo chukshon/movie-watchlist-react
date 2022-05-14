@@ -1,5 +1,10 @@
 import React, { useContext, useReducer, useEffect } from 'react'
-import { ADD_TO_WATCHED, ADD_TO_WATCH_LIST } from './action'
+import {
+  ADD_TO_WATCHED,
+  ADD_TO_WATCH_LIST,
+  REMOVE_FROM_WATCHED,
+  REMOVE_FROM_WATCHLIST,
+} from './action'
 import reducer from './reducer'
 
 const localWatchList = localStorage.getItem('watchlist')
@@ -28,8 +33,23 @@ const AppProvider = ({ children }) => {
   const addToWatched = (movie) => {
     dispatch({ type: ADD_TO_WATCHED, payload: movie })
   }
+  const removeFromWatched = (id) => {
+    dispatch({ type: REMOVE_FROM_WATCHED, payload: id })
+  }
+
+  const removeFromWatchList = (id) => {
+    dispatch({ type: REMOVE_FROM_WATCHLIST, payload: id })
+  }
   return (
-    <AppContext.Provider value={{ ...state, addToWatchList, addToWatched }}>
+    <AppContext.Provider
+      value={{
+        ...state,
+        addToWatchList,
+        addToWatched,
+        removeFromWatchList,
+        removeFromWatched,
+      }}
+    >
       {children}
     </AppContext.Provider>
   )

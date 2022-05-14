@@ -1,11 +1,11 @@
-import { ADD_TO_WATCHED, ADD_TO_WATCH_LIST, TEST } from './action'
+import {
+  ADD_TO_WATCHED,
+  ADD_TO_WATCH_LIST,
+  REMOVE_FROM_WATCHED,
+  REMOVE_FROM_WATCHLIST,
+} from './action'
 
 const reducer = (state, action) => {
-  if (action.type === TEST) {
-    return {
-      ...state,
-    }
-  }
   if (action.type === ADD_TO_WATCH_LIST) {
     return {
       ...state,
@@ -16,6 +16,23 @@ const reducer = (state, action) => {
     return {
       ...state,
       watched: [action.payload, ...state.watched],
+    }
+  }
+  if (action.type === REMOVE_FROM_WATCHED) {
+    return {
+      ...state,
+      watched: state.watched.filter((e) => {
+        return e.id !== action.payload
+      }),
+    }
+  }
+
+  if (action.type === REMOVE_FROM_WATCHLIST) {
+    return {
+      ...state,
+      watchList: state.watchList.filter((e) => {
+        return e.id !== action.payload
+      }),
     }
   }
   throw new Error(`no such action : ${action.type}`)
