@@ -1,4 +1,4 @@
-import { BrowserRouter, Router, Route, Routes } from 'react-router-dom'
+import { Router, Route, Routes, Switch, BrowserRouter } from 'react-router-dom'
 import Header from './components/Header'
 import './App.css'
 import './lib/font-awesome/css/all.min.css'
@@ -11,10 +11,11 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
+        {/* <Route path='/' element={}> */}
         <Route index element={<WatchList />} />
-        <Route path='/add' element={<Add />} />
-        <Route path='/watched' element={<Watched />} />
-        <Route path='*' element={<h1>Error</h1>} />
+        <Route path='add' element={<Add />} />
+        <Route path='watched' element={<Watched />} />
+        {/* </Route> */}
       </Routes>
     </BrowserRouter>
   )
