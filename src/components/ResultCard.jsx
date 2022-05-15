@@ -2,7 +2,21 @@ import Moment from 'react-moment'
 import { useAppContext } from '../context/appContext'
 
 const ResultCard = ({ movie }) => {
-  const { addToWatched, addToWatchList } = useAppContext()
+  const { addToWatched, addToWatchList, watched, watchList } = useAppContext()
+
+  let isWatched = watched.find((e) => e.id === movie.id)
+  let isWatchList = watchList.find((e) => e.id === movie.id)
+  let watchListDisabled = false
+  let watchedDisabled = isWatched ? true : false
+
+  if (isWatchList) {
+    watchListDisabled = true
+  } else if (isWatched) {
+    watchListDisabled = true
+  } else {
+    watchListDisabled = false
+  }
+
   return (
     <div className='result-card'>
       <div className='poster-wrapper'>
@@ -24,11 +38,19 @@ const ResultCard = ({ movie }) => {
         </div>
 
         <div className='controls'>
-          <button className='btn' onClick={() => addToWatchList(movie)}>
+          <button
+            className='btn'
+            onClick={() => addToWatchList(movie)}
+            disabled={watchListDisabled}
+          >
             Add to Watchlist
           </button>
 
-          <button className='btn' onClick={() => addToWatched(movie)}>
+          <button
+            className='btn'
+            onClick={() => addToWatched(movie)}
+            disabled={watchedDisabled}
+          >
             Add to Watched
           </button>
         </div>
