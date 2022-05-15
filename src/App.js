@@ -11,10 +11,10 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        {/* <Route path='/' element={}> */}
+        <Route path='/' element={<WatchList />} />
         <Route index element={<WatchList />} />
-        <Route path='/add' element={<Add />} />
-        <Route path='/watched' element={<Watched />} />
+        <Route path='add' element={<Add />} />
+        <Route path='watched' element={<Watched />} />
         {/* </Route> */}
       </Routes>
     </BrowserRouter>
