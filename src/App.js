@@ -9,15 +9,13 @@ import Watched from './pages/Watched'
 function App() {
   return (
     <BrowserRouter>
-      <Router>
-        <Header />
-        <Routes>
-          <Route index element={<WatchList />} />
-          <Route path='/add' element={<Add />} />
-          <Route path='/watched' element={<Watched />} />
-          <Route path='*' element={<h1>Error</h1>} />
-        </Routes>
-      </Router>
+      <Header />
+      <Routes>
+        <Route index element={<WatchList />} />
+        <Route path='/add' element={<Add />} />
+        <Route path='/watched' element={<Watched />} />
+        <Route path='*' element={<h1>Error</h1>} />
+      </Routes>
     </BrowserRouter>
   )
 }
