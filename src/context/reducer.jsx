@@ -3,6 +3,7 @@ import {
   ADD_TO_WATCH_LIST,
   REMOVE_FROM_WATCHED,
   REMOVE_FROM_WATCHLIST,
+  MOVE_TO_WATCHLIST,
 } from './action'
 
 const reducer = (state, action) => {
@@ -16,6 +17,9 @@ const reducer = (state, action) => {
     return {
       ...state,
       watched: [action.payload, ...state.watched],
+      watchList: state.watchList.filter(
+        (movie) => movie.id !== action.payload.id
+      ),
     }
   }
   if (action.type === REMOVE_FROM_WATCHED) {
@@ -33,6 +37,15 @@ const reducer = (state, action) => {
       watchList: state.watchList.filter((e) => {
         return e.id !== action.payload
       }),
+    }
+  }
+  if (action.type === MOVE_TO_WATCHLIST) {
+    return {
+      ...state,
+      watched: state.watched.filter((e) => {
+        return e.id !== action.payload.id
+      }),
+      watchList: [action.payload, ...state.watchList],
     }
   }
   throw new Error(`no such action : ${action.type}`)

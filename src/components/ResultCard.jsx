@@ -6,16 +6,8 @@ const ResultCard = ({ movie }) => {
 
   let isWatched = watched.find((e) => e.id === movie.id)
   let isWatchList = watchList.find((e) => e.id === movie.id)
-  let watchListDisabled = false
+  let watchListDisabled = isWatchList ? true : isWatched ? true : false
   let watchedDisabled = isWatched ? true : false
-
-  if (isWatchList) {
-    watchListDisabled = true
-  } else if (isWatched) {
-    watchListDisabled = true
-  } else {
-    watchListDisabled = false
-  }
 
   return (
     <div className='result-card'>

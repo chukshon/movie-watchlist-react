@@ -8,8 +8,7 @@ const WatchList = () => {
     <div className='movie-page'>
       <div className='container'>
         <div className='header'>
-          <h1 className='heading'>Watched Movies</h1>
-
+          <h1 className='heading'>WatchList Movies</h1>
           <span className='count-pill'>
             {watchList.length} {watchList.length === 1 ? 'Movie' : 'Movies'}
           </span>

@@ -4,6 +4,7 @@ import {
   ADD_TO_WATCH_LIST,
   REMOVE_FROM_WATCHED,
   REMOVE_FROM_WATCHLIST,
+  MOVE_TO_WATCHLIST,
 } from './action'
 import reducer from './reducer'
 
@@ -36,9 +37,11 @@ const AppProvider = ({ children }) => {
   const removeFromWatched = (id) => {
     dispatch({ type: REMOVE_FROM_WATCHED, payload: id })
   }
-
   const removeFromWatchList = (id) => {
     dispatch({ type: REMOVE_FROM_WATCHLIST, payload: id })
+  }
+  const moveToWatchList = (movie) => {
+    dispatch({ type: MOVE_TO_WATCHLIST, payload: movie })
   }
   return (
     <AppContext.Provider
@@ -48,6 +51,7 @@ const AppProvider = ({ children }) => {
         addToWatched,
         removeFromWatchList,
         removeFromWatched,
+        moveToWatchList,
       }}
     >
       {children}
