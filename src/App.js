@@ -5,6 +5,7 @@ import './lib/font-awesome/css/all.min.css'
 import Add from './pages/Add'
 import WatchList from './pages/WatchList'
 import Watched from './pages/Watched'
+import Error from './pages/Error'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route index element={<WatchList />} />
         <Route path='/add' element={<Add />} />
         <Route path='/watched' element={<Watched />} />
+        <Route path='*' element={<Error />} />
         {/* </Route> */}
       </Routes>
     </BrowserRouter>
