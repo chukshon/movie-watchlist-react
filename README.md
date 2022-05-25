@@ -1,6 +1,3 @@
-Hey! I'm on a mission to learn react. I'll be posting series of mini react projects likes this regularly.
-
-
 # Movie-WatchList-App.
 This is a react app that allows a user to add a movie from lists of movies to watched archive and also allows a user to add a movie from list of movies to watchlist archive.
 
